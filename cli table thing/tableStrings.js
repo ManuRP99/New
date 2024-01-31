@@ -3,10 +3,10 @@ const prompt = require('prompt-sync')({sigint: true});
 const fs = require('fs');
 
 
-const helpLog = 'Commands: \n\tedit: Edit a single cell(add mul to edit more than one)\n\tfill/clear: Shows all or no cells\n\tprint: Prints array to tableOutput.txt'
+const helpLog = 'Commands: \n\tedit: Edit a single cell(add mul to edit more than one)\n\tfill/clear: Shows all or no cells\n\tprint: Prints array to tableOutput.txt\n\tanim: display animations'
 const cleanTerm = '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n';
-const show0 = '   ';
-const show1 = '|||';
+const show0 = ' ';
+const show1 = '8';
 
 let myArray = [];
 let printedArray = [];
@@ -30,7 +30,7 @@ function generateArray(r, c) {
 function tablify(array) {
     for (let i = 0; i < rows; i++) {
         let printRow = array[i] + '\n';
-        console.log(array[i] + '\n');
+        console.log(printRow);
         fs.appendFileSync('tableOutput.txt', printRow);
     }
 }
