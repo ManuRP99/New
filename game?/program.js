@@ -1,11 +1,12 @@
 const prompt = require('prompt-sync')({sigint: true});
-const cleanterm = '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
+const cleanterm = '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n';
+const welcome = 'Welcome to the game. There is no objective yet. \nRemember to use look to check where you are.\n\n';
 
 const descArray = [
-	"You are in a forest. It looks like nobody else is here.",
-	'The trees are very close together here. Moving is difficult but you make it.',
-	'This area is filled with no more than rocks and the ocasional black bush.',
-	'This part of the forest has been burned. You can see thin columns of smoke rising from some of the charred trees.'
+	"You are in a forest. It looks like nobody else is here. There are a lot of trees to the North.\n",
+	'The trees are very close together here. Moving is difficult but you can make it in every direction except South.\n',
+	'This area is filled with no more than rocks and the ocasional black bush. There are mountains to the east.\n',
+	'This part of the forest has been burned. You can see thin columns of smoke rising from some of the charred trees. There is a river to the west.\n'
 ];
 const objectArray = [
 	'stick',
@@ -17,10 +18,10 @@ const objectArray = [
 
 let mapArray = [];
 let inventory = [];
-const mapSize = 5;
+const mapSize = 9;
 const emptyCell = ' ';
 
-let playerLocation = [2, 2];
+let playerLocation = [4, 4];
 
 
 for (let i = 0; i < mapSize; i++) {
@@ -98,8 +99,8 @@ function showInventory () {
 }
 //0 is start text
 
-
-mapArray[2][2] = 0;
+//this sets the starting position to always 0
+mapArray[4][4] = 0;
 //console.table(mapArray);
 
 // console.log(currentDescription);
@@ -107,6 +108,7 @@ mapArray[2][2] = 0;
 
 //console.log(descArray[currentPosition]);
 console.log(cleanterm);
+console.log(welcome);
 console.log(descArray[mapArray[playerLocation[0]][playerLocation[1]]]);
 
 let gameOver = false;
@@ -119,20 +121,40 @@ while (!gameOver) {
 	
 	let playerCommand = prompt('Enter command > ');
 	if (playerCommand === 'north') {
-		console.log(cleanterm);
-		moveNorth();
+		if (currentPosition != 0) {
+			console.log(cleanterm);
+			moveNorth();
+			
+		} else {
+			console.log('There are too many trees that way.');
+		}
 		
 	} else if (playerCommand === 'south') {
-		console.log(cleanterm);
-		moveSouth();
+		if (currentPosition != 1) {
+			console.log(cleanterm);
+			moveSouth();
+		} else {
+			console.log('The trees are too tight together.')
+		}
 		
 	} else if (playerCommand === 'east') {
-		console.log(cleanterm);
-		moveEast();
+		if (currentPosition != 2) {
+			console.log(cleanterm);
+			moveEast();
+
+		} else {
+			console.log("You can't move through rocks.")
+		}
 		
 	} else if (playerCommand === 'west') {
-		console.log(cleanterm);
-		moveWest();
+		if (playerCommand != 3) {
+			console.log(cleanterm);
+			moveWest();
+
+		} else {
+			console.log('You should learn how to swim first.');
+		}
+		
 		
 	} else if (playerCommand === 'look') {
 		console.log(cleanterm);
@@ -146,11 +168,14 @@ while (!gameOver) {
 		console.log(cleanterm);
 		showInventory();
 		
+	} else if (playerCommand === 'secret') {
+		console.table(mapArray);
+		console.log('Player is at ' + playerLocation);
 	} else {
-		console.log('error. Available commands: north, south, east, west, look, search, inv.');
+		console.log('Unavailabe. Available commands: north, south, east, west, look, search, inv.\n Press Ctrl + c to exit.\nsecret: debugging');
 		//console.log(playerLocation);
 	}
 	
-	
+
 }
 
