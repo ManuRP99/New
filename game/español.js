@@ -174,11 +174,11 @@ while (!gameOver) {
 		console.log(cleanterm);
 		showInventory();
 		
-	} else if (playerCommand === 'secret') {
+	} else if (playerCommand === 'mapa') {
 		console.table(mapArray);
 		console.log('Player is at ' + playerLocation);
 	} else {
-		console.log('Error. \nLista de comandos: norte, sur, este, oeste, mirar, buscar, inv.\n Ctrl + c para salir del juego.');
+		console.log('Error. \nLista de comandos: norte, sur, este, oeste, mirar, buscar, inv.\nmapa: mostrar mapa\n Ctrl + c para salir del juego.');
 		//console.log(playerLocation);
 	}
 	

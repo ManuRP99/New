@@ -16,8 +16,11 @@ const objectArray = [
 	'cool rock'
 ];
 
+
 let mapArray = [];
 let inventory = [];
+let searchMap = [];
+
 const mapSize = 9;
 const emptyCell = ' ';
 
@@ -26,8 +29,10 @@ let playerLocation = [4, 4];
 
 for (let i = 0; i < mapSize; i++) {
 	mapArray[i] = new Array;
+	searchMap[i] = new Array;
 	for (let f = 0; f < mapSize;f++) {
 		mapArray[i][f] = emptyCell;
+		searchMap[i][f] = 0;
 		//console.log(i + ' ' + f);
 	}
 }
@@ -40,7 +45,7 @@ for (let i = 0; i < mapSize; i++) {
 }
 
 
-
+//let searchCount = searchMap[playerLocation[0]][playerLocation[1]];
 
 
 
@@ -91,11 +96,36 @@ function moveEast() {
 	
 }
 
-function search() {
-	let objectNumber = Math.floor(Math.random() * 5);
-	console.log('You found a ' + objectArray[objectNumber] + '.');
-	inventory += objectNumber;
+//There has to be something wrong here
+function search(coor) {
+	let target = searchMap[coor[0]][coor[1]];
+	if (target < 3) {
+		target++;
+		let objectNumber = Math.floor(Math.random() * 5);
+		console.log('You found a ' + objectArray[objectNumber] + '.');
+		inventory += objectNumber;
+		return target;
+	} else {
+		console.log('There is nothing here.')
+	}
+	return searchMap;
+
+	console.log(target);
 }
+
+//	if (searchCount < 3) {
+//		let objectNumber = Math.floor(Math.random() * 5);
+//		console.log('You found a ' + objectArray[objectNumber] + '.');
+//		inventory += objectNumber;
+//		searchCount += 1;
+
+		//console.log(searchCount);
+
+	//} else {
+	//	console.log('you don\'t find anything.');
+	//}
+
+//}
 
 function showInventory () {
 	console.log('In your inventory you have: ')
@@ -168,7 +198,7 @@ while (!gameOver) {
 		
 	} else if (playerCommand === 'search') {
 		console.log(cleanterm);
-		search();
+		search(playerLocation);
 		
 	} else if (playerCommand === 'inv') {
 		console.log(cleanterm);
@@ -177,8 +207,13 @@ while (!gameOver) {
 	} else if (playerCommand === 'map') {
 		console.table(mapArray);
 		console.log('Player is at ' + playerLocation);
+	} else if(playerCommand === 'dev') {
+		console.table(mapArray);
+		console.table(searchMap);
+		//console.log(inventory)
+		console.log(searchMap[playerLocation[0]][playerLocation[1]])
 	} else {
-		console.log('Unavailabe. Available commands: north, south, east, west, look, search, inv, map.\n Press Ctrl + c to exit.\nsecret: debugging');
+		console.log('Unavailabe. Available commands: north, south, east, west, look, search, inv, map.\n Press Ctrl + c to exit.\ndev: debugging');
 		//console.log(playerLocation);
 	}
 	

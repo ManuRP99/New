@@ -5,6 +5,6 @@ o	Block North	(start)
 2	Block East	(rocks)
 3	Block West	(burnt)
 
-	- Change the secret command on spanish version
+	- currently in the middle of changing the search function on enlish	
 	- limit the search function
 	- eat the food?
