@@ -1,0 +1,10 @@
+(movement limitations of each cell)
+
+o	Block North	(start)
+1	Block South	(trees)
+2	Block East	(rocks)
+3	Block West	(burnt)
+
+	- Change the secret command on spanish version
+	- limit the search function
+	- eat the food?
