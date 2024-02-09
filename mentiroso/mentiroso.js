@@ -12,7 +12,6 @@ let baraja = [];
 let buffer = [];
 
 
-
 // crear manos 
 
 for (let i = 0; i < playerNum; i++) {
@@ -125,7 +124,9 @@ function jugarTurno(player) {
 	console.log(manos[player]);
 	let numCartas = prompt('Elije cuantas cartas tirar: ');
 	let cartasUse = prompt('Elije que cartas tirar: ');
-	let lie = prompt('Elije un numero para mentir(o indica el numero de las cartas para decir la verdad): ');
+	let mentiraRaw = prompt('Elije lo que vas a decir que son: ');
+	let log = numCartas + ' ' + cartasUse + ' ' + mentiraRaw + '\nplayer';
+	console.log(log);
 }
 
 
@@ -149,3 +150,4 @@ mostrarMano(3);
 // console.log('Manos: ');
 // console.log(manos);
 // console.log(baraja);
+jugarTurno(0);
