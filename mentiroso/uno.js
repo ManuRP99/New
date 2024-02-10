@@ -12,6 +12,9 @@ let baraja = [];
 let buffer = [];
 
 
+
+
+
 // crear manos 
 
 for (let i = 0; i < playerNum; i++) {
@@ -25,7 +28,7 @@ for (let i = 0; i < playerNum; i++) {
 function mostrarMano(player) {
 	console.log('\n\n' + 'Mano de ' + player + ': \n')
 	for (let i = 0; i < manos[player].length; i++) {
-		console.log(manos[player][i].color + ' ' + manos[player][i].numero);
+	console.log(manos[player][i].color + ' ' + manos[player][i].numero);
 	}
 }
 
@@ -115,7 +118,10 @@ function scramble(players) {
 	}
 }
 
-
+/*
+function tirarCarta(player, cleanAction) {
+	manos[player]	
+}
 
 
 
@@ -124,7 +130,7 @@ function jugarTurno(player) {
 	console.log(manos[player]);
 	let numCarta = prompt('Elije numero: ');
 	let colorCarta = prompt('Elije color: ');
-	let cleanAction = Number(numCarta) + ' ' + colorCarta;
+	let cleanAction = [Number(numCarta), colorCarta];
 	console.log(cleanAction);	
 	// tirarCarta(player, cleanaction);
 }
@@ -151,3 +157,4 @@ scramble(playerNum);
 // console.log(manos);
 // console.log(baraja);
 jugarTurno(0);
+

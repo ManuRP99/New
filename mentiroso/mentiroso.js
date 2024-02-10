@@ -23,9 +23,11 @@ for (let i = 0; i < playerNum; i++) {
 // mostrar mano
 
 function mostrarMano(player) {
-	console.log('\n\n' + 'Mano de ' + player + ': \n')
+	//console.log('\n\n' + 'Mano de ' + player + ': \n')
 	for (let i = 0; i < manos[player].length; i++) {
-		console.log(manos[player][i].color + ' ' + manos[player][i].numero);
+		let colorCarta = manos[player][i].colorProp;
+		let numCarta = manos[player][i].numero;
+		console.log(colorCarta + ' ' + numCarta);
 	}
 }
 
@@ -47,14 +49,14 @@ function colores(mult) {
 	if (mult === 0) {
 
 		for (let i = 0; i < 10; i++) {
-			baraja[i].color = 'rojo';
+			baraja[i].colorProp = 'rojo';
 			baraja[i].numero = i;
 		}
 	}
 	if (mult === 1) {
 
 		for (let i = 0; i < 10; i++) {
-			baraja[10 + i].color = 'amarillo';
+			baraja[10 + i].colorProp = 'amarillo';
 			baraja[10 + i].numero = i;
 		}
 	}
@@ -62,7 +64,7 @@ function colores(mult) {
 	if (mult === 2) {
 
 		for (let i = 0; i < 10; i++) {
-			baraja[20 + i].color = 'azul';
+			baraja[20 + i].colorProp = 'azul';
 			baraja[20 + i].numero = i;
 		}
 	}
@@ -70,7 +72,7 @@ function colores(mult) {
 	if (mult === 3) {
 
 		for (let i = 0; i < 10; i++) {
-			baraja[30 + i].color = 'verde';
+			baraja[30 + i].colorProp = 'verde';
 			baraja[30 + i].numero = i;
 		}
 	}
@@ -115,21 +117,39 @@ function scramble(players) {
 	}
 }
 
+// añade las cartas al monton, pero no las quita de la mano 
+//
 
-
+function tirarCartas(player, number, color) {
+	let rightMano = manos[player];
+	for (let i = 0; i < rightMano.length; i++) {
+		if (rightMano[i].colorProp === color) {
+			if (rightMano[i].numero === number) {
+				monton.push(rightMano[i]);
+			}
+		}
+	}
+}
 
 
 // interfaz para el turno
 function jugarTurno(player) {
-	console.log(manos[player]);
-	let numCartas = prompt('Elije cuantas cartas tirar: ');
-	let cartasUse = prompt('Elije que cartas tirar: ');
-	let mentiraRaw = prompt('Elije lo que vas a decir que son: ');
-	let cleanAction = [Number(numCartas), Number(cartasUse), Number(mentiraRaw)];
-	// let log = numCartas + ' ' + cartasUse + ' ' + mentiraRaw + '\n' + player;
-	console.log(cleanAction);
+	mostrarMano(player);
+	// let numCartas = prompt('Elije cuantas cartas vas a tirar: ');
+	let numSel = prompt('Elije un numero para tirar: ');
+	let colSel = prompt('Elije un color para tirar: ');
+	let mentiraRaw = prompt('Elije lo que vas a decir que es: ');
 
-	// tirarCartas(player, cleanaction);
+	let numClean = Number(numSel);
+	let colorClean;
+	let mentiraClean = Number(mentiraRaw);
+	
+	// let cleanAction = [Number(numCartas), Number(cartasSel), Number(mentiraRaw)];
+	// let log = numCartas + ' ' + cartasUse + ' ' + mentiraRaw + '\n' + player;
+	// console.log(cleanAction);
+	
+
+	 tirarCartas(player, numClean, colSel);
 }
 
 
@@ -146,11 +166,22 @@ scrambleFirst();
 // console.log('Buffer: ');
 // console.log(buffer);
 scramble(playerNum);
-mostrarMano(0);
-mostrarMano(1);
-mostrarMano(2);
-mostrarMano(3);
 // console.log('Manos: ');
 // console.log(manos);
 // console.log(baraja);
 jugarTurno(0);
+console.log(monton);
+jugarTurno(1);
+console.log(monton);
+jugarTurno(2);
+console.log(monton);
+jugarTurno(3);
+console.log(monton);
+jugarTurno(0);
+console.log(monton);
+jugarTurno(1);
+console.log(monton);
+jugarTurno(2);
+console.log(monton);
+jugarTurno(3);
+console.log(monton);
