@@ -3,13 +3,14 @@ const prompt = require('prompt-sync')({sigint: true});
 // manos, monton y baraja son arrays, cartas son objects
 
 //let playerNum = prompt('Número de jugadores: ');
-let playerNum = 4;
+let playerNum = 2;
 // let playerNames = [];
 // prompt for player names at beginning and store them for display with each hand
 let manos = [];
 let monton = [];
 let baraja = [];
 let buffer = [];
+let currMentira = '';
 
 
 // crear manos 
@@ -23,12 +24,16 @@ for (let i = 0; i < playerNum; i++) {
 // mostrar mano
 
 function mostrarMano(player) {
-	//console.log('\n\n' + 'Mano de ' + player + ': \n')
+	console.log('\n\n' + 'Mano de ' + player + ': \n')
+	let bufferMost = [];
+	// format log
 	for (let i = 0; i < manos[player].length; i++) {
 		let colorCarta = manos[player][i].colorProp;
 		let numCarta = manos[player][i].numero;
-		console.log(colorCarta + ' ' + numCarta);
+		bufferMost += (/*colorCarta + ' ' + */numCarta + '\t');
 	}
+	// log hand
+	console.log(bufferMost);
 }
 
 
@@ -123,33 +128,42 @@ function scramble(players) {
 function tirarCartas(player, number, color) {
 	let rightMano = manos[player];
 	for (let i = 0; i < rightMano.length; i++) {
-		if (rightMano[i].colorProp === color) {
-			if (rightMano[i].numero === number) {
 				monton.push(rightMano[i]);
+				rightMano.splice(i, 1);
 			}
-		}
+		//}
 	}
-}
+	//mostrarMano(player);
+
+
+
+// levantar o no
+//
 
 
 // interfaz para el turno
 function jugarTurno(player) {
 	mostrarMano(player);
+	let levantarSel = prompt('Quieres levantar?: s/n  ')
+	if (levantarSel === 's') {
+		levantar();
+	}
 	// let numCartas = prompt('Elije cuantas cartas vas a tirar: ');
-	let numSel = prompt('Elije un numero para tirar: ');
-	let colSel = prompt('Elije un color para tirar: ');
-	let mentiraRaw = prompt('Elije lo que vas a decir que es: ');
+	let numSel = prompt('Elije un numero para tirar:  ');
+	// let colSel = prompt('Elije un color para tirar: ');
+	let mentiraRaw = prompt('Elije lo que vas a decir que es:  ');
 
 	let numClean = Number(numSel);
 	let colorClean;
 	let mentiraClean = Number(mentiraRaw);
+	currMentira = mentiraClean;
 	
 	// let cleanAction = [Number(numCartas), Number(cartasSel), Number(mentiraRaw)];
 	// let log = numCartas + ' ' + cartasUse + ' ' + mentiraRaw + '\n' + player;
 	// console.log(cleanAction);
 	
 
-	 tirarCartas(player, numClean, colSel);
+	 tirarCartas(player, numClean/*, colSel*/);
 }
 
 
@@ -170,18 +184,6 @@ scramble(playerNum);
 // console.log(manos);
 // console.log(baraja);
 jugarTurno(0);
-console.log(monton);
 jugarTurno(1);
-console.log(monton);
-jugarTurno(2);
-console.log(monton);
-jugarTurno(3);
-console.log(monton);
 jugarTurno(0);
-console.log(monton);
 jugarTurno(1);
-console.log(monton);
-jugarTurno(2);
-console.log(monton);
-jugarTurno(3);
-console.log(monton);
