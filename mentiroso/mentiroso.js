@@ -11,6 +11,7 @@ let monton = [];
 let baraja = [];
 let buffer = [];
 let currMentira = '';
+let currVerdad = '';
 
 
 // crear manos 
@@ -128,17 +129,23 @@ function scramble(players) {
 function tirarCartas(player, number, color) {
 	let rightMano = manos[player];
 	for (let i = 0; i < rightMano.length; i++) {
-				monton.push(rightMano[i]);
-				rightMano.splice(i, 1);
-			}
-		//}
+		currVerdad = rightMano[i].numero;
+		monton.push(rightMano[i]);
+		rightMano.splice(i, 1);
 	}
+}
+	
 	//mostrarMano(player);
 
 
 
 // levantar o no
 //
+function levantar() {
+	console.log('Lo que se ha dicho: ' + currMentira);
+	console.log('Carta: ' + currVerdad);
+	
+}
 
 
 // interfaz para el turno
