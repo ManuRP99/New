@@ -122,14 +122,11 @@ function scramble(players) {
 // interfaz para el turno
 function jugarTurno(player) {
 	console.log(manos[player]);
-	let numCartas = prompt('Elije cuantas cartas tirar: ');
-	let cartasUse = prompt('Elije que cartas tirar: ');
-	let mentiraRaw = prompt('Elije lo que vas a decir que son: ');
-	let cleanAction = [Number(numCartas), Number(cartasUse), Number(mentiraRaw)];
-	// let log = numCartas + ' ' + cartasUse + ' ' + mentiraRaw + '\n' + player;
-	console.log(cleanAction);
-
-	// tirarCartas(player, cleanaction);
+	let numCarta = prompt('Elije numero: ');
+	let colorCarta = prompt('Elije color: ');
+	let cleanAction = Number(numCarta) + ' ' + colorCarta;
+	console.log(cleanAction);	
+	// tirarCarta(player, cleanaction);
 }
 
 
@@ -146,10 +143,10 @@ scrambleFirst();
 // console.log('Buffer: ');
 // console.log(buffer);
 scramble(playerNum);
-mostrarMano(0);
-mostrarMano(1);
-mostrarMano(2);
-mostrarMano(3);
+// mostrarMano(0);
+// mostrarMano(1);
+// mostrarMano(2);
+// mostrarMano(3);
 // console.log('Manos: ');
 // console.log(manos);
 // console.log(baraja);
