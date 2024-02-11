@@ -2,6 +2,8 @@ const prompt = require('prompt-sync')({sigint: true});
 
 // manos, monton y baraja son arrays, cartas son objects
 
+const spacer = '\n\n\n';
+
 //let playerNum = prompt('Número de jugadores: ');
 let playerNum = 2;
 // let playerNames = [];
@@ -12,6 +14,8 @@ let baraja = [];
 let buffer = [];
 let currMentira = '';
 let currVerdad = '';
+
+let game = true;
 
 
 // crear manos 
@@ -29,14 +33,24 @@ function mostrarMano(player) {
 	let bufferMost = [];
 	// format log
 	for (let i = 0; i < manos[player].length; i++) {
-		let colorCarta = manos[player][i].colorProp;
 		let numCarta = manos[player][i].numero;
-		bufferMost += (/*colorCarta + ' ' + */numCarta + '\t');
+		bufferMost += (numCarta + '\t');
 	}
 	// log hand
 	console.log(bufferMost);
 }
 
+function mostrarMonton() {
+	console.log('\n\n' + 'Monton ' + ': \n');
+	let bufferMost = [];
+	// format log
+	for (let i = 0; i < monton.length; i++) {
+		let numCarta = monton[i].numero;
+		bufferMost += (numCarta + '\t');
+	}
+	// log monton
+	console.log(bufferMost);
+}
 
 
 // crear baraja de 40 objects
@@ -126,12 +140,16 @@ function scramble(players) {
 // añade las cartas al monton, pero no las quita de la mano 
 //
 
-function tirarCartas(player, number, color) {
+function tirarCartas(player, number, lie) {
 	let rightMano = manos[player];
 	for (let i = 0; i < rightMano.length; i++) {
-		currVerdad = rightMano[i].numero;
-		monton.push(rightMano[i]);
-		rightMano.splice(i, 1);
+		if (rightMano[i].numero == number) {
+			currVerdad = rightMano[i].numero;
+			monton.push(rightMano[i]);
+			rightMano.splice(i, 1);
+			currMentira = lie;
+			break;
+		}
 	}
 }
 	
@@ -170,12 +188,13 @@ function jugarTurno(player) {
 	// console.log(cleanAction);
 	
 
-	 tirarCartas(player, numClean/*, colSel*/);
+	tirarCartas(player, numClean, mentiraRaw);
+	console.log(monton, buffer);
+	mostrarMano(player);
 }
 
 
 // console.log('');
-
 
 colores(0);
 colores(1);
@@ -190,7 +209,19 @@ scramble(playerNum);
 // console.log('Manos: ');
 // console.log(manos);
 // console.log(baraja);
-jugarTurno(0);
-jugarTurno(1);
-jugarTurno(0);
-jugarTurno(1);
+
+
+
+while (game) {
+	for (let i = 0; i < playerNum; i++) {
+		jugarTurno(i);
+		console.log(spacer);
+		mostrarMonton();
+	}
+
+}
+
+// jugarTurno(0);
+// jugarTurno(1);
+// jugarTurno(0);
+// jugarTurno(1);
