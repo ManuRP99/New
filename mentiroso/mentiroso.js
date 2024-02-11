@@ -159,20 +159,36 @@ function tirarCartas(player, number, lie) {
 
 // levantar o no
 //
-function levantar() {
+function levantar(player, prevPlayer) {
 	console.log('Lo que se ha dicho: ' + currMentira);
 	console.log('Carta: ' + currVerdad);
-	
+	if (currVerdad == currMentira) {
+		comerMonton(player);
+	}
+	if (currVerdad !== currMentira) {
+		comerMonton(prevPlayer);
+	}
 }
+
+
+function comerMonton(player) {
+	buffer = [];
+	for (let i = 0; i < monton.length; i++) {
+		let card = monton.pop();
+		buffer.push(card);
+		let bufCard = buffer.pop();
+		manos[player].push(bufCard);
+		mostrarMonton();
+
+	}
+}
+
 
 
 // interfaz para el turno
 function jugarTurno(player) {
 	mostrarMano(player);
-	let levantarSel = prompt('Quieres levantar?: s/n  ')
-	if (levantarSel === 's') {
-		levantar();
-	}
+	
 	// let numCartas = prompt('Elije cuantas cartas vas a tirar: ');
 	let numSel = prompt('Elije un numero para tirar:  ');
 	// let colSel = prompt('Elije un color para tirar: ');
@@ -214,6 +230,11 @@ scramble(playerNum);
 
 while (game) {
 	for (let i = 0; i < playerNum; i++) {
+		let levantarSel = prompt('Quieres levantar?: s/n  ')
+		let previous = i - 1;
+		if (levantarSel === 's') {
+			levantar(i, previous);
+		}
 		jugarTurno(i);
 		console.log(spacer);
 		mostrarMonton();
