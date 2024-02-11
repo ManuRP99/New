@@ -1,0 +1,31 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 5px;
+	background-color: black;
+	color: white;
+/*	border: 1px solid white;*/
+	font-family: 'Sixtyfour', sans-serif;
+}
+
+
+.clock-container {
+	width: fit-content;
+	height: 100px;
+	margin: 30vh auto;
+}
+
+.clock-container div {
+	display: inline-block;
+	
+}
+
+#semana-container {
+	width: fit-content;
+	height: 100px;
+	margin: 30vh auto;
+}
+
+h1 {
+	font-size: 60px;
+}
