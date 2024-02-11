@@ -16,6 +16,7 @@ let currMentira = '';
 let currVerdad = '';
 
 let game = true;
+let saltar = false;
 
 
 // crear manos 
@@ -164,9 +165,11 @@ function levantar(player, prevPlayer) {
 	console.log('Carta: ' + currVerdad);
 	if (currVerdad == currMentira) {
 		comerMonton(player);
+		
 	}
 	if (currVerdad !== currMentira) {
 		comerMonton(prevPlayer);
+		saltar = true;
 	}
 }
 
@@ -178,7 +181,6 @@ function comerMonton(player) {
 		buffer.push(card);
 		let bufCard = buffer.pop();
 		manos[player].push(bufCard);
-		mostrarMonton();
 
 	}
 }
@@ -230,10 +232,14 @@ scramble(playerNum);
 
 while (game) {
 	for (let i = 0; i < playerNum; i++) {
+		saltar = false;
 		let levantarSel = prompt('Quieres levantar?: s/n  ')
 		let previous = i - 1;
 		if (levantarSel === 's') {
 			levantar(i, previous);
+		}
+		if (saltar === true) {
+			i += 1;
 		}
 		jugarTurno(i);
 		console.log(spacer);
