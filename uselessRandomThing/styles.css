@@ -1,0 +1,49 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 5px;
+	background-color: black;
+	color: white;
+	font-family: sans-serif:
+/*	border: 1px solid red;*/
+}
+
+
+body {
+	height: 90vh;
+	width: 90vw;
+	margin: 20px auto;
+}
+
+
+
+.container {
+	position: absolute;
+	background: none;
+	width: fit-content;
+	height: fit-content;
+	display: grid;
+	grid-template-rows: repeat(2, 20vh);
+	grid-template-columns: repeat(2, 20vw);
+	gap: 10px;
+	margin: 40% auto;
+}
+
+
+
+.content {
+	background: none;
+	overflow-wrap: break-word;
+	font-size: 8px;
+	z-index: 0;
+}
+
+
+
+#title {
+	max-height: 40vh;
+	background: none;
+	display: block;
+/*	display: none;*/
+	z-indez: 1;
+}
