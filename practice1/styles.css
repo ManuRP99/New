@@ -1,0 +1,25 @@
+* {
+	box-sizing: border-box;
+	color: white;
+	border: 1px solid red;
+}
+
+
+body {
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 50px;
+}
+
+canvas {
+	width: 800px;
+	height: 800px;
+	border : 0;
+	background-color: #101010;
+}
