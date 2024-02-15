@@ -19,3 +19,11 @@ if temperature > 30:
 	# indentation matters!!!
 	print('Too hot!')
 
+
+arrays
+
+arrays hold several of the same value
+	from array import *
+
+	arr = array('i', [1, 2, 3, 4, 5])
+	print(arr)
