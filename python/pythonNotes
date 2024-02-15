@@ -1,0 +1,21 @@
+comparison operators
+>	greater than
+>=	greater or equal than
+<   smaller than
+<=	smaller or equal than
+==	equals to
+!=	not equal to
+
+
+logical operators
+
+and (true if all true)
+or	(true if one is true)
+not	(True = False)
+
+# this code is saved to temperature.py
+temperature = 35
+if temperature > 30:
+	# indentation matters!!!
+	print('Too hot!')
+
