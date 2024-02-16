@@ -1,0 +1,14 @@
+Ctrl-w s split horizontal
+Ctrl-w v split vertical
+
+:sp <file>	horizontal
+:vs <file>	vertical
+
+
+Ctrl-w +/- Resize height
+Ctrl-w >/< Resize vertical
+
+:term open terminal
+Ctrl-w-N normal mode(exit insert(exit terminal)
+exit)
+terminal with :q!
