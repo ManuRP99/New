@@ -28,8 +28,8 @@ const heightUnit = Math.floor(canvas.height * 10) / 1000;
 
 let whSqX = 45;
 let whSqY = 45;
-let whSqVX = 1;
-let whSqVY = 1;
+let whSqVX = 0;
+let whSqVY = 0;
 
 const whiteSquare = () => {
 	ctx.clearRect(((whSqX - 1) * widthUnit),((whSqY - 1) * heightUnit),(12 * widthUnit),(12 * heightUnit));
@@ -49,17 +49,22 @@ const controlBR = document.querySelector('#ctrl-br');
 
 
 // change this to change what the controls do
+// normal mode
 let tlHover = () => moveWhSq(-1, -1);
+let trHover = () => moveWhSq( 1, -1);
+let blHover = () => moveWhSq(-1,  1);
+let brHover = () => moveWhSq( 1,  1);
 
-let trHover = () => moveWhSq(1, -1);
-
-let blHover = () => moveWhSq(-1, 1);
-
-let brHover = () => moveWhSq(1, 1);
-
-
+// slow mode
+//let tlHover = () => moveWhSq(-0.3, -0.3);
+//let trHover = () => moveWhSq( 0.3, -0.3);
+//let blHover = () => moveWhSq(-0.3,  0.3);
+//let brHover = () => moveWhSq( 0.3,  0.3);
 
 
+
+
+// x and y are the directions in which it will me boved
 const moveWhSq = (x, y) => {
 	whSqVX = x;
 	whSqVY = y;
@@ -67,7 +72,7 @@ const moveWhSq = (x, y) => {
 	whSqVX = 0;
 	whSqVY = 0;
 	if (whSqX < 0) {
-	ctx.clearRect(((whSqX - 1) * widthUnit),((whSqY - 1) * heightUnit),(12 * widthUnit),(12 * heightUnit));
+		ctx.clearRect(((whSqX - 1) * widthUnit),((whSqY - 1) * heightUnit),(12 * widthUnit),(12 * heightUnit));
 		whSqX = 45;
 		whSqY = 45;
 	}
@@ -89,11 +94,3 @@ const moveWhSq = (x, y) => {
 }
 
 
-
-whiteSquare();
-	// ctx.fillRect((45 * widthUnit),(45 * heightUnit),(10 * widthUnit),(10 * heightUnit));
-	//
-	//
-	
-	
-	
