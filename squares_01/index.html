@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- -->
+<!-- -->
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
@@ -10,16 +12,12 @@
 
 	<body>
 
+		<!-- use key events to control the game, keydown whould start moving the target, and keyup should stop it-->
 		<canvas></canvas>
+		<h3 id="points-txt"></h3>
 
-		<div id="buttons-div">
-		<!--onmousemove is quite uncontrolable-->
-			<div class="control-div" id="ctrl-tl" onmousemove="tlHover()"></div>
-			<div class="control-div" id="ctrl-tr" onmousemove="trHover()"></div>
-			<div class="control-div" id="ctrl-bl" onmousemove="blHover()"></div>
-			<div class="control-div" id="ctrl-br" onmousemove="brHover()"></div>
-		</div>
-
+		<script src="classes.js"></script>
+		<script src="movement.js"></script>
 	</body>
 </html>
 

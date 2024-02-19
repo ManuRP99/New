@@ -1,96 +1,114 @@
-// so far this moves very fast in diagonals, change the hatml div elements to change how it reacts
 
-// ~/Desktop/webdev/pieces/bigcanvas
-//
+
+
+//canvas
+
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-
 
 canvas.width = (window.innerWidth - 35);
 canvas.height = (window.innerHeight - 50);
 
-
-//
-// make the buttons div same size as the canvas
-const buttonsDiv = document.querySelector('#buttons-div');
-
-buttonsDiv.width = (window.innerWidth - 35);
-buttonsDiv.height = (window.innerHeight - 50);
-
-
-//
-// get width and height units for square sizes
 const widthUnit = Math.floor(canvas.width * 10) / 1000;
 const heightUnit = Math.floor(canvas.height * 10) / 1000;
 
+
+
+// generate square objects
+
+const white = new WhiteSquare(45, 45);
+const green = new GreenSquare(0, 0);
+const red = new RedSquare(30, 50);
+
+
+//render objects
+function render(obj) {
+	ctx.clearRect( (obj.x * widthUnit), (obj.y * heightUnit), (obj.width), (obj.height));
+	ctx.fillStyle = obj.color;
+	ctx.fillRect( (obj.x * widthUnit), (obj.y * heightUnit), (obj.width), (obj.height));
+}
+//render(white);
+//render(red);
+//render(green);
+function clearAll() {
+	ctx.clearRect(0, 0, 5000, 5000);
+}
+
 //
-// create white square
-
-let whSqX = 45;
-let whSqY = 45;
-let whSqVX = 0;
-let whSqVY = 0;
-
-const whiteSquare = () => {
-	ctx.clearRect(((whSqX - 1) * widthUnit),((whSqY - 1) * heightUnit),(12 * widthUnit),(12 * heightUnit));
-	whSqX += whSqVX;
-	whSqY += whSqVY;
-
-	ctx.fillStyle = '#ffffff';
-	// ctx.fillrect((),(),(),());
-	ctx.fillRect((whSqX * widthUnit),(whSqY * heightUnit),(10 * widthUnit),(10 * heightUnit));
-}
-
-// declare the control divs and give them functions
-const controlTL = document.querySelector('#ctrl-tl');
-const controlTR = document.querySelector('#ctrl-tr');
-const controlBL = document.querySelector('#ctrl-bl');
-const controlBR = document.querySelector('#ctrl-br');
+//
+//
+//
 
 
-// change this to change what the controls do
-// normal mode
-let tlHover = () => moveWhSq(-1, -1);
-let trHover = () => moveWhSq( 1, -1);
-let blHover = () => moveWhSq(-1,  1);
-let brHover = () => moveWhSq( 1,  1);
+// key functions
+//
+let vertSpeed = 0;
+let horiSpeed = 0;
 
-// slow mode
-//let tlHover = () => moveWhSq(-0.3, -0.3);
-//let trHover = () => moveWhSq( 0.3, -0.3);
-//let blHover = () => moveWhSq(-0.3,  0.3);
-//let brHover = () => moveWhSq( 0.3,  0.3);
-
-
-
-
-// x and y are the directions in which it will me boved
-const moveWhSq = (x, y) => {
-	whSqVX = x;
-	whSqVY = y;
-	whiteSquare();
-	whSqVX = 0;
-	whSqVY = 0;
-	if (whSqX < 0) {
-		ctx.clearRect(((whSqX - 1) * widthUnit),((whSqY - 1) * heightUnit),(12 * widthUnit),(12 * heightUnit));
-		whSqX = 45;
-		whSqY = 45;
+document.body.addEventListener('keydown', (ev) => {
+	if (ev.key == 'ArrowUp'){
+		vertSpeed = -10;
+		horiSpeed = 0;
 	}
-	else if (whSqY < 0) {
-		ctx.clearRect(((whSqX - 1) * widthUnit),((whSqY - 1) * heightUnit),(12 * widthUnit),(12 * heightUnit));
-		whSqX = 45;
-		whSqY = 45;
+	if (ev.key == 'ArrowDown'){
+		vertSpeed = 10;
+		horiSpeed = 0;
 	}
-	else if (whSqX > 90) {
-		ctx.clearRect(((whSqX - 1) * widthUnit),((whSqY - 1) * heightUnit),(12 * widthUnit),(12 * heightUnit));
-		whSqX = 45;
-		whSqY = 45;
-	} 
-	else if (whSqY > 90) {
-		ctx.clearRect(((whSqX - 1) * widthUnit),((whSqY - 1) * heightUnit),(12 * widthUnit),(12 * heightUnit));
-		whSqX = 45;
-		whSqY = 45;
+	if (ev.key == 'ArrowLeft'){
+		horiSpeed = -10;
+		vertSpeed = 0;
 	}
-}
+	if (ev.key == 'ArrowRight'){
+		horiSpeed = 10;
+		vertSpeed = 0;
+	}
+});
 
 
+
+
+
+setInterval(interval = () => {
+
+	moveSquare(green, horiSpeed, vertSpeed);
+	render(green);
+}, 50);
+
+
+
+
+
+
+
+
+
+/*
+// this whould stop the movement
+document.body.addEventListener('keyup', (ev) => {
+	console.log(ev.key);
+});
+*/
+
+
+
+
+
+
+
+/*
+ctx.fillStyle = white.color;
+ctx.fillRect( (white.x * heightUnit), (white.y * widthUnit), white.height, white.width );
+
+
+ctx.fillStyle = green.color;
+ctx.fillRect( (green.x * heightUnit), (green.y * widthUnit), green.height, green.width );
+
+ctx.fillStyle = red.color;
+ctx.fillRect( (red.x * heightUnit), (red.y * widthUnit), red.height, red.width );
+*/
+
+// 
+// console.log(white);
+// moveSquare(white, 1, 1);
+// console.log(white);
+// 
