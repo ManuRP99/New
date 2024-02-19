@@ -1,0 +1,158 @@
+
+du -d 0 ./* -h		Shows size of all files at 1 depth
+
+
+
+
+# SETUP
+#
+
+
+# make 3 folders of depth 5
+#
+	mkdir exampleFolder 
+	
+	cd exampleFolder
+	
+	for x in (seq 5) 
+	  mkdir exFolA$x 
+	  cd exFolA$x
+	end
+	
+	cd ~/Desktop/exampleFolder
+	
+	for x in (seq 5) 
+	  mkdir exFolB$x 
+	  cd exFolB$x
+	end
+	
+	cd ~/Desktop/exampleFolder
+	
+	for x in (seq 5) 
+	  mkdir exFolC$x 
+	  cd exFolC$x
+	end
+	
+	cd ~/Desktop/exampleFolder
+
+#
+#
+#
+
+
+
+# USE EXAMPLES
+#
+
+> du -d0
+
+64      .
+
+
+> du -d1
+
+20      ./exFolB1
+20      ./exFolA1
+20      ./exFolC1
+64      .
+
+
+
+# by default it lists everyting
+
+> du 
+
+4       ./exFolB1/exFolB2/exFolB3/exFolB4/exFolB5
+8       ./exFolB1/exFolB2/exFolB3/exFolB4
+12      ./exFolB1/exFolB2/exFolB3
+16      ./exFolB1/exFolB2
+20      ./exFolB1
+4       ./exFolA1/exFolA2/exFolA3/exFolA4/exFolA5
+8       ./exFolA1/exFolA2/exFolA3/exFolA4
+12      ./exFolA1/exFolA2/exFolA3
+16      ./exFolA1/exFolA2
+20      ./exFolA1
+4       ./exFolC1/exFolC2/exFolC3/exFolC4/exFolC5
+8       ./exFolC1/exFolC2/exFolC3/exFolC4
+12      ./exFolC1/exFolC2/exFolC3
+16      ./exFolC1/exFolC2
+20      ./exFolC1
+64      .
+
+
+# use wildcard to print all than contain 'A'
+
+> du *A*
+
+4       exFolA1/exFolA2/exFolA3/exFolA4/exFolA5
+8       exFolA1/exFolA2/exFolA3/exFolA4
+12      exFolA1/exFolA2/exFolA3
+16      exFolA1/exFolA2
+20      exFolA1
+
+
+> du -d0 *C*
+
+20      exFolC1
+
+
+> du -d2 *C*
+
+12      exFolC1/exFolC2/exFolC3
+16      exFolC1/exFolC2
+20      exFolC1
+
+
+> du -d0 ~/			#this doesnt take forever, 
+					#dont be an idiot and do du / again
+50796   /home/manu/
+
+
+#not very usable, remember -h
+> du -d1 ~/
+224     /home/manu/.npm
+4       /home/manu/Downloads
+36784   /home/manu/.cache
+16      /home/manu/.links2
+8       /home/manu/.vim
+4       /home/manu/Public
+4       /home/manu/Templates
+1828    /home/manu/Desktop
+4       /home/manu/Documents
+8       /home/manu/Pictures
+4       /home/manu/Music
+7976    /home/manu/.local
+8       /home/manu/.gnupg
+76      /home/manu/.pki
+3736    /home/manu/.config
+4       /home/manu/Videos
+50796   /home/manu/
+
+
+
+#better
+> du -d1 -h ~/
+224K    /home/manu/.npm
+4.0K    /home/manu/Downloads
+36M     /home/manu/.cache
+16K     /home/manu/.links2
+8.0K    /home/manu/.vim
+4.0K    /home/manu/Public
+4.0K    /home/manu/Templates
+1.8M    /home/manu/Desktop
+4.0K    /home/manu/Documents
+8.0K    /home/manu/Pictures
+4.0K    /home/manu/Music
+7.8M    /home/manu/.local
+8.0K    /home/manu/.gnupg
+76K     /home/manu/.pki
+3.7M    /home/manu/.config
+4.0K    /home/manu/Videos
+50M     /home/manu/
+
+
+
+
+
+
+
