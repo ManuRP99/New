@@ -33,6 +33,10 @@ class Square {
 		this.x = x * widthUnit;
 		this.y = y * heightUnit;
 		this.color = color;
+		this.upLimit = this.y;
+		this.downLimit = this.y + this.height;
+		this.leftLimit = this.x;
+		this.rightLimit = this.x + this.width;
 	}
 }
 
@@ -45,6 +49,17 @@ class randomSquare {
 		this.color = randomColor();
 	}
 }
+
+class Wall {
+	constructor (width, height, x, y) {
+		this.width	= width * widthUnit;
+		this.height = height * heightUnit;
+		this.x = x * widthUnit;
+		this.y = y * heightUnit;
+		this.color = '#000000';
+	}
+}
+
 
 
 
@@ -98,6 +113,14 @@ document.body.addEventListener('keyup', (ev) => {
 let colCount = 0;
 //fugly but works
 const collision = (obj1, obj2) => {
+/*
+	if (obj1.rightLimit > obj2.leftLimit && obj1.leftLimit < obj2.rightLimit && obj1.downLimit > obj2.upLimit && obj1.upLimit < obj2.downLimit) {
+		obj1.color = '#ff0000';
+		obj2.color = randomColor();
+		console.log('comething');
+	}
+};
+*/
 	if (obj1.x + obj1.width > obj2.x && (obj2.x + obj2.width) > obj1.x && obj1.y + obj1.height > obj2.y && (obj2.y + obj2.height) > obj1.y) {
 		colCount++;
 		counter.innerHTML = colCount;
@@ -112,7 +135,6 @@ const collision = (obj1, obj2) => {
 		obj2.color = '#ff0000';
 	}
 };
-
 
 setInterval(() => {
 	let countBuf = colCount;
