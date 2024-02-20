@@ -5,6 +5,7 @@ const ctx = canvas.getContext('2d');
 
 ctx.lineWidth = 1;
 ctx.strokeStyle = '#ffff00';
+ctx.fillStyle = '#121212';
 
 
 let x = 60;
@@ -14,9 +15,12 @@ let dy = 1;
 let xRa = 60;
 let yRa = 60;
 
+
 function animate() {
 	requestAnimationFrame(animate);
-	ctx.clearRect((x -5), (y - 5),20,20);
+
+	ctx.fillStyle = '#121212';
+	ctx.fillRect((x -5), (y - 5),20,20);
 	ctx.strokeRect(x, y, 10, 10);
 	x += dx;
 	y += dy;
