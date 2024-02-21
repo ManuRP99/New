@@ -1,0 +1,60 @@
+PROGRAM
+
+	returns the sum, diff, mult and div of two given numbers
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+
+		// int will return only whole numbers
+		// float i havent tried yet
+		// doubles and floats are similar anyway
+
+	double num1;
+	double num2;
+	printf("First number: ");
+
+
+		// & (pointer)is important, dont know why
+
+	scanf("%lf", &num1);
+	printf("Second number: ");
+	scanf("%lf", &num2);
+
+
+		// note %lf on scanf and only %f on printf
+
+	printf("Sum:  \t%f\n", num1 + num2);
+	printf("Diff: \t%f\n", num1 - num2);
+	printf("Mult: \t%f\n", num1 * num2);
+	printf("Div:  \t%f\n", num1 / num2);
+
+
+	return 0;
+
+}
+
+
+
+OUTPUT
+
+
+> ./calc_pr           
+
+First number: 100     // These are the user inputs
+Second number: 25     //
+Sum:    125.000000    
+Diff:   75.000000     
+Mult:   2500.000000   
+Div:    4.000000      
+
+
+
+
+
+

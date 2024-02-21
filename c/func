@@ -1,0 +1,17 @@
+
+int main()
+{
+	printf("Top");
+	sayHi("Manu", 24);
+	sayHi("Paco", 35);
+	sayHi("Pepe", 40);
+	printf("Bottom");
+	return 0;
+}
+
+void sayHi(char name[], int age){
+	printf("Hello %s! You are %d\n", name, age);
+	
+}
+
+

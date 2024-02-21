@@ -1,0 +1,44 @@
+
+Everything you put inside of main will run as the program.
+What is outside can be referenced
+
+#includes <stdio.h> (import standard library)
+
+data types 
+{
+// integers
+	int				// 4 bytes, -2bil to +2bil
+	short			// 2 bytes, -32k to +32k
+	char			// 1 byte, -127 to 128
+
+// unsigned
+	unsigned int	// 0 to 4bil
+
+// floating point(decimals)
+
+	float	// 4 bytes
+	double  // 8 bytes	// twice as precise
+}
+
+
+functions 
+{
+	void functions return automatically
+	void doSomething()
+	{
+		int x = 2, y = 3;
+		x += y;
+		printf("Result: %d\n", x);
+	}
+}
+
+
+
+OPERATORS
+
+
+
+
+OPERATORS
+
+
