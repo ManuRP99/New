@@ -43,13 +43,39 @@ document.body.addEventListener('keydown', (ev) => {
 //ctx.fillText(ship, origin[0], origin[1]);
 //ctx.clearRect(x, y, 100, 100);
 
+
+//border
+function drawBorder() {
+ctx.strokeStyle = '#ff0000';
+ctx.strokeRect(10, 10, (canvas.width - 20), (canvas.height - 20));
+}
+//ctx.fillStyle = '#aaaaaa';
+//ctx.fillRect(10, 10, (canvas.width - 20), (canvas.height - 20));
+ctx.clearRect(10, 10, (canvas.width - 20), (canvas.height - 20));
+
+
 ctx.strokeStyle = '#00ff00';
+
+// collision with border
+//
+function borderCollision(hitbox) {
+	if (hitbox[0] < 10 || hitbox[0] > (canvas.height - 20)){
+		console.log("X collision!");
+	}
+}
+
 function game() {
-	ctx.fillStyle = '#000000'
-	ctx.fillRect(x, (y- 50), 200, 200);
+	ctx.clearRect(10, 10, (canvas.width - 20), (canvas.height - 20));
+	const hitbox = [x, (y - 10), 28, 15];
+	ctx.fillStyle = '#000000';
+	//ctx.fillRect(x, (y - 10), 28, 15);
+	ctx.fillRect(hitbox[0], hitbox[1], hitbox[2], hitbox[3]);
+	ctx.strokeRect(hitbox[0], hitbox[1], hitbox[2], hitbox[3]);
 	x += xVel;
 	y += yVel;
+	ctx.strokeStyle = '#00ff00';
 	ctx.strokeText(ship, x, y);
+	drawBorder();
 }
 
 setInterval(game, 3);
