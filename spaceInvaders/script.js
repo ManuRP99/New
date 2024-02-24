@@ -7,6 +7,7 @@ canvas.height = (window.innerHeight - 70);
 
 
 let ship = '}-o-{';
+let bullet = '.';
 
 // rn is at center of screen
 let origin = [(Math.floor(canvas.width / 2)), (Math.floor(canvas.height / 2))];
