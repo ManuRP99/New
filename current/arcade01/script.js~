@@ -128,7 +128,7 @@ function drawotherGoal() {
 	if (110 < x && 10 < y && 210 > x && 410 > y) {
 		backToOrigin();
 	}
-	else if (x > (canvas.width - 410) && y > (canvas.height - 210) && y < (canvas.height - 110)) {
+	else if (x > (canvas.width - 410) && y > (canvas.height - 210)) {
 		backToOrigin();
 	}
  }
