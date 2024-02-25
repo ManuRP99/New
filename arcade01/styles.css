@@ -33,3 +33,10 @@ body {
 .legend p {
 	margin-top: 2px
 }
+
+h2 {
+	font-size: 20px;
+	display: inline;
+}
+
+

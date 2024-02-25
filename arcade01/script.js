@@ -7,8 +7,9 @@ canvas.height = (window.innerHeight - 70);
 
 
 let speedMult = 1;
-let ship = `}-${speedMult}-{`;
-let bullet = '.';
+//let ship = `}-${speedMult}-{`;
+let ship = "}]x[{";
+let cargo = '[=]';
 
 // rn is at center of screen
 let origin = [(Math.floor(canvas.width / 2)), (Math.floor(canvas.height / 2))];
@@ -92,6 +93,7 @@ function borderCollision(x, y) {
 		ctx.fillStyle = "#ffffff";
 		ctx.fillText("Picking up cargo!", origin[0], (canvas.height - 15));
 		showScore();
+		ctx.fillText(cargo, (x + 5), (y + 22));
 		
 	}
  }
@@ -109,7 +111,7 @@ function drawotherGoal() {
 		ctx.fillStyle = "#ffffff";
 		ctx.fillText("Dropping cargo!", origin[0], (canvas.height - 15));
 		showActualScore();
-		ship = `}-${speedMult}-{`;
+		ctx.fillText(cargo, (x + 5), (y + 22));
 
 		
 	}
@@ -128,6 +130,7 @@ function drawotherGoal() {
 	}
  }
 
+const level = document.getElementById("level");
 const points = document.getElementById("points");
 const actualPoints = document.getElementById("actual-points");
 let score = 0;
@@ -172,6 +175,7 @@ function game() {
 	checkRed(hitbox[0], hitbox[1]);
 	checkGoal(hitbox[0], hitbox[1]);
 	borderCollision(hitbox[0], hitbox[1]);
+	level.innerText = speedMult;
 }
 
 setInterval(game, 4);
