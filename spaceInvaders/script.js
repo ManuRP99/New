@@ -22,7 +22,9 @@ function backToOrigin() {
 	ctx.fillStyle = '#000000';
 	ctx.fillRect(10, 10, 10000, 10000);
 	score = 0;
+	actualScore = 0;
 	points.innerText = score;
+	actualPoints.innerText = actualScore;
 }
 
 
@@ -88,12 +90,28 @@ function borderCollision(x, y) {
  function checkGoal(x, y) {
 	if (10 < x && 10 < y && 110 > x && 110 > y) {
 		ctx.fillStyle = "#ffffff";
-		ctx.fillText("Nice!", origin[0], (canvas.height - 15));
+		ctx.fillText("Picking up cargo!", origin[0], (canvas.height - 15));
 		showScore();
 		
 	}
  }
 
+// drop points region
+
+function drawotherGoal() {
+	ctx.strokeStyle = "#aaffaa";
+	ctx.strokeRect((canvas.width - 110), (canvas.height - 110), 100, 100);
+
+}
+
+ function checkAnotherGoal(x, y) {
+	if ((canvas.width - 110) < x && (canvas.height - 110) < y/* && 110 > x && 110 > y*/) {
+		ctx.fillStyle = "#ffffff";
+		ctx.fillText("Dropping cargo!", origin[0], (canvas.height - 15));
+		showActualScore();
+		
+	}
+ }
  // draw red areas
  function drawRedArea() {
 	ctx.strokeStyle = "#ff0000";
@@ -109,14 +127,31 @@ function borderCollision(x, y) {
  }
 
 const points = document.getElementById("points");
+const actualPoints = document.getElementById("actual-points");
 let score = 0;
+let actualScore = 0;
 function showScore() {
+	if (score < 1200) {
 	score++;
 	points.innerText = score;
-
+	}
 }
 
+function showActualScore() {
+	if (score > 0) {
+		actualScore++;
+		score--;
 
+		actualPoints.innerText = actualScore;
+		points.innerText = score;
+		if (actualScore > 1000) {
+			speedMult++;
+			actualScore = 0;
+		}
+	}
+}
+
+let speedMult = 1;
 function game() {
 	ctx.clearRect(10, 10, (canvas.width - 20), (canvas.height - 20));
 	const hitbox = [x, (y - 10), 28, 15];
@@ -124,18 +159,20 @@ function game() {
 	//ctx.fillRect(x, (y - 10), 28, 15);
 	ctx.fillRect(hitbox[0], hitbox[1], hitbox[2], hitbox[3]);
 	//ctx.strokeRect(hitbox[0], hitbox[1], hitbox[2], hitbox[3]);
-	x += xVel * 3;
-	y += yVel * 3;
+	x += xVel * speedMult;
+	y += yVel * speedMult;
 	ctx.strokeStyle = '#00ff00';
 	ctx.strokeText(ship, x, y);
 	drawBorder();
 	drawGoal();
+	drawotherGoal();
+	checkAnotherGoal(hitbox[0], hitbox[1]);
 	drawRedArea();
 	checkRed(hitbox[0], hitbox[1]);
 	checkGoal(hitbox[0], hitbox[1]);
 	borderCollision(hitbox[0], hitbox[1]);
 }
 
-setInterval(game, 10);
+setInterval(game, 4);
 
 
