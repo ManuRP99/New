@@ -22,7 +22,6 @@ function backToOrigin() {
 	ctx.fillStyle = '#000000';
 	ctx.fillRect(10, 10, 10000, 10000);
 	score = 0;
-	actualScore = 0;
 	points.innerText = score;
 	actualPoints.innerText = actualScore;
 }
