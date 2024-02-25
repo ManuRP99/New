@@ -6,7 +6,8 @@ canvas.width = (window.innerWidth - 50);
 canvas.height = (window.innerHeight - 70);
 
 
-let ship = '}-o-{';
+let speedMult = 1;
+let ship = `}-${speedMult}-{`;
 let bullet = '.';
 
 // rn is at center of screen
@@ -108,6 +109,8 @@ function drawotherGoal() {
 		ctx.fillStyle = "#ffffff";
 		ctx.fillText("Dropping cargo!", origin[0], (canvas.height - 15));
 		showActualScore();
+		ship = `}-${speedMult}-{`;
+
 		
 	}
  }
@@ -150,7 +153,6 @@ function showActualScore() {
 	}
 }
 
-let speedMult = 1;
 function game() {
 	ctx.clearRect(10, 10, (canvas.width - 20), (canvas.height - 20));
 	const hitbox = [x, (y - 10), 28, 15];
