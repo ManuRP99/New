@@ -1,0 +1,145 @@
+compiler: gcc
+
+/*multi-line comment*/ 
+// single line comment
+
+1-write program.c
+
+#compile
+> gcc program.c
+#execute
+> ./a.out
+
+#compile
+> gcc program.c -o test
+#execute
+> ./test
+
+
+method: a container with code
+
+
+variables: 
+	# [] indicates that its more than one character
+	char characterName[] = "Manu";
+
+	# %s is a placeholder for the string
+	printf("There once was a man named %s\n", characterName);
+
+	#int is a whole number
+	int characterAge = 24;
+
+constants:
+
+// constants with allcaps is a good practice
+const int NUM = 5;
+
+printf("Hello World");	// Hello World is a const
+
+%s string
+%c char
+%d int
+%f float
+
+
+data types
+
+int		whole number
+	int age = 24;
+
+double	decimal
+	double media = 2.5;
+
+float	decimal
+	float media = 2.5;
+
+char	letra
+	char grade = 'a';
+
+char [] string		NON MODIFIABLE
+	char grades[] = 'asdf';
+
+
+
+printf		is a function
+
+	printf("Hello World!\n");
+	printf("%d", 500);
+	printf("%f", 5.5);
+	printf("%s", "Hello");
+	printf("%s, %d", "Hello", 500);
+
+
+
+math
+
+	printf("%f",8.9);
+	printf("%f",2.5 + 1.1);
+	printf("%f", 2 + 2.1);		/*returns a float*/
+	printf("%d", 2 + 2.1);		/*returns a int*/
+
+	printf("%f", pow(2, 3));	/*returns 2³*/
+	pow		powers
+	sqrt	square root
+	ceil	round up
+	floor	round down
+
+getting input
+
+int age;
+printf("Enter your age \n");
+// reads type %d and stores it in age
+scanf("%d", &age);
+printf("You are %d years old", age);
+
+
+char name[20];
+printf("Enter your name \n");
+scanf('%s', name);
+printf('your name is %s', name):
+
+
+
+
+fgets is similar to scanf, it can accept spaces
+
+char name[20];
+printf("Enter your name \n");
+// specify length and input(stdin is the regular console)
+// and prints a new line when printf
+fgets(name, 20, stdin);
+printf('your name is %s', name):
+
+
+
+
+ARRAYS
+
+int numbers[] = {4, 5, 6, 7};
+printf("%d", numbers[0]);
+	> returns 4
+numbers[1] = 8;
+printf("%d", numbers[1];
+	> returns 8
+int numbers[10];	// declares empty array 10 capacity
+
+
+FUNCTIONS
+	
+
+int main()
+{
+	printf("Top");
+	sayHi("Manu", 24);
+	sayHi("Paco", 35);
+	sayHi("Pepe", 40);
+	printf("Bottom");
+	return 0;
+}
+
+void sayHi(char name[], int age){
+	printf("Hello %s! You are %d\n", name, age);
+	
+}
+
+

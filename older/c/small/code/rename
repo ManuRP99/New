@@ -1,0 +1,4 @@
+mv pr_story story_pr
+mv pr_helloWorld helloWorld_pr
+mv pr_square square_pr
+mv pr_triangle triangle_pr

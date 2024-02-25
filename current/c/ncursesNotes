@@ -1,0 +1,26 @@
+must use 
+#include <ncurses.h>
+
+gcc file.c -lncurses
+gcc file.c -o program -lncurses
+
+	
+initscr();
+
+initializes terminal in curses mode
+has to be called before any screen manipulation
+
+
+printw();
+
+analogous to printf but prints onto stdscr at coordinates (x, y)
+
+
+refresh();
+
+dumps contents of stdscr onto the screen
+basically renders whatever you changed 
+
+endwin();
+
+end the curses mode

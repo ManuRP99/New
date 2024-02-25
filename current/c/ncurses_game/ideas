@@ -1,0 +1,35 @@
+SCREEN DISTRIBUTION
+
+________________________________________________________
+|i:			inv	 |				[#]	    				|			* 0 is the player
+|wasd:		move |				[#]	    	...	!!!		|			* o are bots
+|arrows:	shoot|				[#]	    	...	---		|			* > hand empty 
+|q:			swap |				[#]	    	@"*	///		|			* ' pistol
+|e:			act	 |				[#]	    				|			* " smg
+|________________|				[#][#][#][#][#][#][#][#]|			* | shotgun
+|														|			* ] cannon
+|														|			* } bow
+|						<0>			<o>					|			* ... coins
+|						<0'			<o'					|			* --- ammo
+|						<0"			<o"					|			* /// arrows
+|						<0|			<o|					|			* 
+|						<0]			<o]					|			*
+|						<0}			<o}					|			*
+|_______________________________________________________|			*
+|INFO_PLAYER			   |MAP							|			*
+|	hp: 10	ammo: 50	   |		[!]-[#]-[ ]			|			*
+|	xp:	0	coins: 10	   |			 |				|			*
+|__________________________|____________[ ]_____________|			*
+
+simple rpg like 
+shop - get ammo, weapons and hp
+
+dungeon - spawn enemies
+
+tavern - get missions to kill x monsters
+
+~o>	rat
+:o:	bug
+>o<	bat
+
+

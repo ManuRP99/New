@@ -1,0 +1,16 @@
+libraries: 
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <time.h>
+
+
+function prototypes
+void resetBoard();
+void printBoard();
+int checkFreeSpaces();
+void playerMove();
+void computerMove();
+char checkWinner();
+void printWinner(char);
+
