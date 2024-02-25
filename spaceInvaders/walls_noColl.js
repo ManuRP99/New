@@ -16,11 +16,6 @@ let yVel = 0;
 let x = origin[0];
 let y = origin[1];
 
-function backToOrigin() {
-	x = origin[0];
-	y = origin[1];
-}
-
 
 // arrow keys event listeners
 document.body.addEventListener('keydown', (ev) => {
@@ -66,64 +61,33 @@ ctx.strokeStyle = '#00ff00';
 function borderCollision(x, y) {
 	if (x < 10 || (x + 28) > (canvas.width - 20)) {
 		console.log("X collision!");
-		backToOrigin();
 	}else if (y < 10 || (y + 15) > (canvas.height -20)) {
 		console.log("Y collision!");
-		backToOrigin();
 	}
 }
 
 // draw walls
 
-const wallsX = [110, 110, 110, 10, 110, 210, 310, 310, 210, 210, 210];
-const wallsY = [10, 110, 210, 310, 310, 310, 220, 120, 120, 20, 10];
 function drawWalls() {
 	ctx.strokeStyle = '#ffffff';
-	ctx.strokeRect(110, 10, 10, 100);
-	ctx.strokeRect(110, 110, 10, 100);
-	ctx.strokeRect(110, 210, 100, 10);
-	ctx.strokeRect(10, 310, 100, 10);
-	ctx.strokeRect(110, 310, 100, 10);
-	ctx.strokeRect(210, 310, 100, 10);
-	ctx.strokeRect(310, 220, 10, 100);
-	ctx.strokeRect(310, 120, 10, 100);
-	ctx.strokeRect(210, 120, 10, 100);
-	ctx.strokeRect(210, 20, 10, 100);
-	ctx.strokeRect(210, 10, 100, 10);
+	// wall at x center, y 10(border), width 10, height 10
+	ctx.strokeRect(origin[0], 10, 10, 100);
+	ctx.strokeRect(origin[0], 110, 100, 10);
+	ctx.strokeRect((origin[0] + 100), 110, 100, 10);
+	ctx.strokeRect((origin[0] + 200), 110, 100, 10);
+	ctx.strokeRect((origin[0] + 300), 110, 10, 100);
+	ctx.strokeRect((origin[0] + 400), 110, 10, 100);
+	ctx.strokeRect((origin[0] + 400), 10, 10, 100);
+	ctx.strokeRect((origin[0] + 500), 110, 10, 100);
+	ctx.strokeRect((origin[0] + 500), 210, 10, 100);
+	ctx.strokeRect((origin[0] + 400), 310, 100, 10);
+	ctx.strokeRect((origin[0] + 300), 310, 100, 10);
+	ctx.strokeRect((origin[0] + 300), 210, 10, 100);
+	//ctx.strokeRect(origin[0], (origin[1] + 50), 10, 100);
 }
-
-// goal region 
- 
- function drawGoal() {
-	ctx.strokeStyle = "#30aa30";
-	ctx.strokeRect(10, 10, 100, 100);
- }
-
- function checkGoal(x, y) {
-	if (10 < x && 10 < y && 110 > x && 110 > y) {
-		ctx.fillStyle = "#ffffff";
-		ctx.fillText("Nice!", origin[0], (canvas.height - 15));
-		
-	}
- }
-
 
 // collision with walls
-function wallCollision(tx, ty, wx, wy) {
-	for (let i = 0; i < wx.length; i++) {
-		if (tx == wx[i] && ty == wy[i]) {
-			console.log("wall col!");
-			backToOrigin();
-		}
-	}
-
-	for (let i = 0; i < wy.length; i++) {
-		if (ty == wy[i] && tx == wx[i]) {
-			console.log("wall col!");
-			backToOrigin();
-		}
-	}
-}
+function wallCollision() {}
 
 function game() {
 	ctx.clearRect(10, 10, (canvas.width - 20), (canvas.height - 20));
@@ -138,9 +102,6 @@ function game() {
 	ctx.strokeText(ship, x, y);
 	drawBorder();
 	drawWalls();
-	drawGoal();
-	wallCollision(hitbox[0], hitbox[1], wallsX, wallsY);
-	checkGoal(hitbox[0], hitbox[1]);
 	borderCollision(hitbox[0], hitbox[1]);
 }
 
