@@ -70,7 +70,7 @@ const drawBars = () => {
 };
 
 const drawBall = () => {
-	ctx.fillStyle = "#5555ff";
+	ctx.fillStyle = "#555577";
 	ctx.fillRect(ballPosX, ballPosY, 10, 10);
 };
 
