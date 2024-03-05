@@ -2,12 +2,30 @@
 	box-sizing: content-box;
 	margin: 0;
 	padding: 0;
-	border: 1px solid blue;
+	/*border: 1px solid blue;*/
  }
 
  body {
- 	width:  99vw;
+ 	width:  95vw;
 	height: 99vh;
  	margin: 2px auto;
+	text-align: center;
+	background-color: #ccc;
  }
  
+#head {
+	background-color: #ccc;
+} 
+
+
+#main {
+	background-color: #fff;
+	height: 700px;
+	margin-top: 2%;
+	padding-top: 3%;
+}
+
+#main p {
+	margin-top: 2%;
+}
+
