@@ -21,11 +21,4 @@ const changePixel = (r, c) => {
 
 changePixel(3, 3);
 
-let complete = false;
 
-const spiral = () => {
-	while(!complete) {
-		changePixel(center, center);
-
-	}
-};
