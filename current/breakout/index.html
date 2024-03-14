@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                border: 1px solid red;
+            }
+            canvas {
+                background: #666;
+                display: block;
+                margin: 0 auto;
+            }
+            button {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="480" height="320"></canvas>
+        <button onclick="startGame()"></button>
+        <script>
+            const canvas = document.getElementById("myCanvas");
+            const ctx = canvas.getContext("2d");
+
+            //initial ball position
+            let x = 45;
+            //let x = canvas.width / 2;
+            let y = canvas.height - 30;
+
+            let playerPos = 10;
+
+            //ball speed
+            let vX = 2;
+            let vY = -2;
+
+
+            //single color for everything
+            ctx.fillStyle = "#aad";
+
+            function draw() {
+                //
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(playerPos, 300, 70, 10);
+                drawBall();
+                x += vX;
+                y += vY;
+            }
+
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            // d
+            function startGame() {
+                const interval = setInterval(draw, 30);
+            }
+        </script>
+    </body>
+</html>
